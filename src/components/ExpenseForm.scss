@@ -1,0 +1,117 @@
+@import "../scss/_vars.scss";
+.form {
+  margin: $gutter $gutter * 2 !important;
+  max-width: 100%;
+  @include desde($small) {
+    margin: $gutter auto !important;
+  }
+
+  .form-control {
+    width: 100%;
+    height: 50px;
+    background: $lighter-grey;
+    border: none;
+    border-radius: $radius;
+    margin-bottom: $gutter !important;
+    color: $medium-grey;
+    padding: $gutter;
+    caret-color: $grey;
+    &:focus {
+      outline: 1px solid $primary;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $grey;
+      font-weight: $medium;
+    }
+  }
+}
+.btn {
+  height: 50px;
+  background: $primary;
+  border: none;
+  border-radius: $radius * 6;
+  margin: 0 auto !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  color: $white;
+  font-weight: $bold;
+  &:focus {
+    outline: transparent;
+  }
+  &-icon {
+    height: $gutter * 1.4;
+    width: $gutter * 1.4;
+  }
+}
+
+.list {
+  margin: $gutter $gutter * 2 !important;
+  max-width: 100%;
+  @include desde($small) {
+    margin: $gutter auto !important;
+  }
+}
+
+.item {
+  width: 100%;
+  height: 50px;
+  background: $lighter-grey;
+  justify-content: space-around;
+  border-radius: $radius;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: $gutter * 0.5 !important;
+  .info {
+    display: flex;
+    width: 70%;
+    justify-content: space-around;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+    .edit-btn,
+    .delete-btn {
+      width: 50px;
+      height: 50px;
+      border: none;
+
+      color: $white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .edit-btn {
+      background: $light-grey;
+    }
+    .delete-btn {
+      background: $grey;
+      border-radius: 0 $radius $radius 0;
+    }
+  }
+}
+
+.icon-custom {
+  margin: 0 auto !important;
+  margin-top: $gutter !important;
+  color: $lighter-grey;
+  height: 140px;
+  width: 140px;
+}
+
+.list {
+  &-empty {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  &-empty__title {
+    text-align: center;
+    color: $lighter-grey;
+  }
+}
