@@ -10,7 +10,7 @@ const ExpenseList = ({ expenses, clearItems, handleDelete, handleEdit }) => {
   return (
     <>
       <ul className="list">
-        {expenses.length == 0 && (
+        {expenses.length === 0 && (
           <div className="list-empty">
             <FiEdit className="btn-icon icon-custom" />
             <h3 className="list-empty__title">No hay ningún gasto</h3>

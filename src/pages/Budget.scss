@@ -1,0 +1,13 @@
+@import "../scss/_vars.scss";
+.title {
+  text-align: center;
+  margin-top: 48px !important;
+}
+.total {
+  background: $medium-grey;
+  color: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}

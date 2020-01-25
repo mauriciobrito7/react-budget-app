@@ -35,7 +35,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80%;
+  width: 100%;
   color: $white;
   font-weight: $bold;
   &:focus {
@@ -98,7 +98,6 @@
 
 .icon-custom {
   margin: 0 auto !important;
-  margin-top: $gutter !important;
   color: $lighter-grey;
   height: 140px;
   width: 140px;
@@ -109,6 +108,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin: $gutter * 2 0 !important;
   }
   &-empty__title {
     text-align: center;

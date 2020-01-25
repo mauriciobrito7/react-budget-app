@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-// components
-import ExpenseForm from "../components/ExpenseForm";
-import ExpenseList from "../components/ExpenseList";
-import Alert from "../components/Alert";
+
+//Component
+import Budget from "./Budget";
+
 import uuid from "uuid/v4";
 
 // useEffect let's perform side effects
@@ -119,40 +119,21 @@ function BudgetContainer() {
     setId(expense.id);
   };
 
-  const titleStyle = {
-    textAlign: "center",
-    marginTop: "48px !important"
-  };
-
   return (
     <>
-      {alert.show && <Alert type={alert.type} text={alert.text} />}
-      <h1 style={titleStyle}>Presupuesto</h1>
-      <main className="App">
-        <ExpenseForm
-          edit={edit}
-          charge={charge}
-          amount={amount}
-          handleCharge={handleCharge}
-          handleAmount={handleAmount}
-          handleSubmit={handleSubmit}
-        />
-        <ExpenseList
-          expenses={expenses}
-          clearItems={clearItems}
-          handleDelete={handleDelete}
-          handleEdit={handleEdit}
-        />
-      </main>
-      <h1>
-        Total gastado:{" "}
-        <span className="total">
-          $
-          {expenses.reduce((acc, curr) => {
-            return (acc += parseInt(curr.amount)); // we make sure it is a sum of numbers
-          }, 0)}
-        </span>
-      </h1>
+      <Budget
+        edit={edit}
+        charge={charge}
+        amount={amount}
+        handleCharge={handleCharge}
+        handleAmount={handleAmount}
+        handleSubmit={handleSubmit}
+        expenses={expenses}
+        clearItems={clearItems}
+        handleDelete={handleDelete}
+        handleEdit={handleEdit}
+        alert={alert}
+      />
     </>
   );
 }

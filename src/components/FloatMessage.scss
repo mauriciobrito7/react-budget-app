@@ -1,0 +1,16 @@
+@import "../scss/_vars.scss";
+.total {
+  background: $medium-grey;
+  position: fixed;
+  z-index: 1000;
+  bottom: $gutter;
+  left: calc(50vw - 75px);
+  color: $white;
+  height: 50px;
+  border-radius: $radius;
+  width: 150px;
+  margin: 0 auto;
+  @include desde($small) {
+    margin: $gutter auto !important;
+  }
+}
