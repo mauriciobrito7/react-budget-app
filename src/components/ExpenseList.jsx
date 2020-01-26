@@ -6,7 +6,13 @@ import ExpenseItem from "./ExpenseItem";
 import { IoMdTrash } from "react-icons/io";
 import { FiEdit } from "react-icons/fi";
 
-const ExpenseList = ({ expenses, clearItems, handleDelete, handleEdit }) => {
+const ExpenseList = ({
+  expenses,
+  clearItems,
+  handleDelete,
+  handleEdit,
+  theme
+}) => {
   return (
     <>
       <ul className="list">
@@ -23,12 +29,13 @@ const ExpenseList = ({ expenses, clearItems, handleDelete, handleEdit }) => {
               expense={expense}
               handleDelete={handleDelete}
               handleEdit={handleEdit}
+              theme={theme}
             />
           );
         })}
       </ul>
       {expenses.length > 0 && (
-        <button className="btn" onClick={clearItems}>
+        <button className="btn btn-danger" onClick={clearItems}>
           {" "}
           borrar todo
           <IoMdTrash className="btn-icon" />

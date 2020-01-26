@@ -7,23 +7,6 @@
   }
 
   .form-control {
-    width: 100%;
-    height: 50px;
-    background: $lighter-grey;
-    border: none;
-    border-radius: $radius;
-    margin-bottom: $gutter !important;
-    color: $medium-grey;
-    padding: $gutter;
-    caret-color: $grey;
-    &:focus {
-      outline: 1px solid $primary;
-    }
-
-    &::-webkit-input-placeholder {
-      color: $grey;
-      font-weight: $medium;
-    }
   }
 }
 .btn {
@@ -45,6 +28,10 @@
     height: $gutter * 1.4;
     width: $gutter * 1.4;
   }
+  &-danger {
+    background: #f22613;
+    width: 50%;
+  }
 }
 
 .list {
@@ -53,6 +40,11 @@
   @include desde($small) {
     margin: $gutter auto !important;
   }
+}
+
+.item.dark {
+  background: $dark-grey;
+  color: $white;
 }
 
 .item {

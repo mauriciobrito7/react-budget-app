@@ -18,11 +18,14 @@ function Budget({
   clearItems,
   handleDelete,
   handleEdit,
-  alert
+  alert,
+  handleTheme,
+  theme
 }) {
   return (
     <>
       {alert.show && <Alert type={alert.type} text={alert.text} />}
+      <button onClick={handleTheme}>modo nocturno</button>
       <h1 className="title">Presupuesto</h1>
       <main className="App">
         <ExpenseForm
@@ -32,12 +35,14 @@ function Budget({
           handleCharge={handleCharge}
           handleAmount={handleAmount}
           handleSubmit={handleSubmit}
+          theme={theme}
         />
         <ExpenseList
           expenses={expenses}
           clearItems={clearItems}
           handleDelete={handleDelete}
           handleEdit={handleEdit}
+          theme={theme}
         />
       </main>
       <FloatMessage expenses={expenses} />

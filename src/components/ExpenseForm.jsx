@@ -7,7 +7,8 @@ const ExpenseForm = ({
   amount,
   handleCharge,
   handleAmount,
-  handleSubmit
+  handleSubmit,
+  theme
 }) => {
   return (
     <form className="form" onSubmit={handleSubmit}>
@@ -15,7 +16,7 @@ const ExpenseForm = ({
         {/*To conect the value with the variable */}
         <input
           type="text"
-          className="form-control"
+          className={`${theme} form-control`}
           id="charge"
           name="charge"
           placeholder="gasto"
@@ -27,7 +28,7 @@ const ExpenseForm = ({
         {/*To conect the value with the variable */}
         <input
           type="number"
-          className="form-control"
+          className={`${theme} form-control`}
           id="amount"
           name="amount"
           placeholder="cuanto"

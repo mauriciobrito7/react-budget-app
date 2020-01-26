@@ -34,7 +34,7 @@ const initialExpenses = localStorage.getItem("expenses")
   ? JSON.parse(localStorage.getItem("expenses"))
   : [];
 
-function BudgetContainer() {
+function BudgetContainer({ theme, handleTheme }) {
   // ********** state values *********
   // all expenses, add expenses
   const [expenses, setExpenses] = useState(initialExpenses);
@@ -107,6 +107,8 @@ function BudgetContainer() {
   const handleDelete = id => {
     // return a new array without the item with the same id
     setExpenses(expenses.filter(expense => expense.id !== id));
+    setCharge("");
+    setAmount("");
     handleAlert("danger", "gasto eliminado");
   };
 
@@ -133,6 +135,8 @@ function BudgetContainer() {
         handleDelete={handleDelete}
         handleEdit={handleEdit}
         alert={alert}
+        handleTheme={handleTheme}
+        theme={theme}
       />
     </>
   );

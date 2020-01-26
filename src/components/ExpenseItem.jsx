@@ -4,10 +4,10 @@ import React from "react";
 import { IoMdCreate } from "react-icons/io";
 import { IoMdTrash } from "react-icons/io";
 
-const ExpenseItem = ({ expense, handleDelete, handleEdit }) => {
+const ExpenseItem = ({ expense, handleDelete, handleEdit, theme }) => {
   const { id, charge, amount } = expense;
   return (
-    <li className="item">
+    <li className={`item ${theme}`}>
       <div className="info">
         <span className="expense">{charge}</span>
         <span className="amount">${amount}</span>
