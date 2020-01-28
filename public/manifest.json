@@ -1,6 +1,6 @@
 {
-  "short_name": "Budget", //nombre que se pone en el home screen
-  "name": "Budget APP", //
+  "short_name": "Budget",
+  "name": "Budget APP",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,9 +18,11 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".", // en que página empieza nuestra aplicación
-  "scope": "/", // cubre todo el dominio por defecto
-  "display": "standalone", // modo que se va a ver la app
-  "theme_color": "#8c14fc", // color para la barra dentro android
-  "background_color": "#ffffff"
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#8c14fc",
+  "background_color": "#ffffff",
+  "related_applications": [],
+  "prefer_related_applications": false
 }
