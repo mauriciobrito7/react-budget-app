@@ -3,40 +3,40 @@
 /* You can add global styles to this file, and also import other style files */
 
 html {
-  box-sizing: border-box;
-  font-size: $font-size;
-  font-family: $font-text;
-  font-weight: $normal;
-  -ms-text-size-ajust: 100%;
-  -moz-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  color: $dark-grey;
+    box-sizing: border-box;
+    font-size: $font-size;
+    font-family: $font-text;
+    font-weight: $normal;
+    -ms-text-size-ajust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    color: $dark-grey;
+    transition: 0.3s ease all;
 }
 
 body {
-  overflow-x: hidden;
-  background: $white;
-  transition: 0.3s ease all;
-  &.dark {
-    background: $darker-grey;
-  }
+    overflow-x: hidden;
+    background: $white;
+    &.dark {
+        background: $dark-background;
+    }
 }
 
 *,
 *::after,
 *::before {
-  box-sizing: inherit;
-  margin: 0 !important;
-  padding: 0;
+    box-sizing: inherit;
+    margin: 0 !important;
+    padding: 0;
 }
 
 a {
-  color: $darker-grey;
-  text-decoration: none;
+    color: $darker-grey;
+    text-decoration: none;
 }
 
 i {
-  display: inline;
+    display: inline;
 }
 
 h1,
@@ -45,21 +45,21 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: 1.3em;
-  font-weight: $bold;
-  color: $medium-grey;
+    line-height: 1.3em;
+    font-weight: $bold;
+    color: $medium-grey;
 }
 
 h1 {
-  font-size: $h1-size;
+    font-size: $h1-size;
 }
 
 h2 {
-  font-size: $h2-size;
+    font-size: $h2-size;
 }
 
 h3 {
-  font-size: $h3-size;
+    font-size: $h3-size;
 }
 
 img,
@@ -69,21 +69,21 @@ iframe,
 picture,
 progress,
 svg {
-  display: inline-block;
-  width: 100%;
-  max-width: 100%;
-  vertical-align: baseline;
-  height: auto;
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+    vertical-align: baseline;
+    height: auto;
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 li {
-  margin-left: 1em;
-  list-style-type: inherit;
-  list-style-position: inside;
+    margin-left: 1em;
+    list-style-type: inherit;
+    list-style-position: inside;
 }
 
 label,
@@ -100,83 +100,119 @@ menu,
 nav,
 section,
 summary {
-  display: block;
+    display: block;
 }
 
 b,
 strong {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 table {
-  border-collapse: collapse;
+    border-collapse: collapse;
 }
 
 *[disabled] {
-  cursor: default;
-  color: $medium-grey;
-  background: $grey;
+    cursor: default;
+    color: $medium-grey;
+    background: $grey;
 }
+
 
 /*
   ::selection{
       background: color(hover);
   }*/
 
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #f5f5f5;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-  background-color: #f5f5f5;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #0ae;
-  background-image: -webkit-gradient(
-    linear,
-    0 0,
-    0 100%,
-    color-stop(0.5, rgba(255, 255, 255, 0.2)),
-    color-stop(0.5, transparent),
-    to(transparent)
-  );
-}
-
-.layout {
-  margin: 0 auto !important;
-  @include desde($small) {
-    margin: $gutter auto !important;
-  }
-}
-
+// ::-webkit-scrollbar-track {
+//     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+//     background-color: #f5f5f5;
+// }
+// ::-webkit-scrollbar {
+//     width: 8px;
+//     background-color: #f5f5f5;
+// }
+// ::-webkit-scrollbar-thumb {
+//     background-color: #0ae;
+//     background-image: -webkit-gradient( linear, 0 0, 0 100%, color-stop(0.5, rgba(255, 255, 255, 0.2)), color-stop(0.5, transparent), to(transparent));
+// }
 input {
-  width: 100%;
-  height: 50px;
-  background: $lighter-grey;
-  border: none;
-  border-radius: $radius;
-  margin-bottom: $gutter !important;
-  color: $medium-grey;
-  padding: $gutter;
-  caret-color: $grey;
-  transition: 0.3s ease all;
-  &:focus {
-    outline: 1px solid $primary;
-  }
-
-  &::-webkit-input-placeholder {
-    color: $grey;
-    font-weight: $medium;
-  }
-  &.dark {
-    background: $dark-grey;
-    color: $grey;
+    width: 100%;
+    height: 50px;
+    background: $lighter-grey;
+    border: none;
+    border-radius: $radius;
+    margin-bottom: $gutter !important;
+    color: $primary;
+    padding: $gutter;
+    caret-color: $grey;
     &:focus {
-      outline: 1px solid $primary;
-      background: $dark-grey;
+        outline: 1px solid $primary;
     }
-  }
+    &::-webkit-input-placeholder {
+        color: $grey;
+        font-weight: $medium;
+    }
+    &.dark {
+        background: $dark-background;
+        color: $primary;
+        font-weight: $bold;
+        box-shadow: $press-shadow;
+        caret-color: $primary;
+        &:focus {
+            outline: 1px solid $primary;
+        }
+    }
+}
+
+button {
+    &.btn {
+        height: 50px;
+        background: $primary;
+        border: none;
+        border-radius: $radius * 6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        color: $white;
+        font-weight: $bold;
+        &:focus {
+            outline: transparent;
+        }
+        &-icon {
+            height: $gutter * 1.4;
+            width: $gutter * 1.4;
+        }
+        &-danger {
+            color: $danger !important;
+        }
+        &-success {
+            color: $success !important;
+        }
+        &-circle {
+            width: 40px !important;
+            height: 40px !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &__small {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+    &.dark {
+        background: $dark-background;
+        box-shadow: $flat-shadow;
+        color: $white;
+        &:active {
+            box-shadow: $press-shadow;
+        }
+    }
+}
+
+.icon-custom {
+    width: 20px;
+    height: 20px;
 }

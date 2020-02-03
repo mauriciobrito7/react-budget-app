@@ -2,8 +2,10 @@ import React from "react";
 //components
 import ExpenseItem from "./ExpenseItem";
 
+// styles
+import "./ExpenseList.scss";
+
 // Icons
-import { IoMdTrash } from "react-icons/io";
 import { FiEdit } from "react-icons/fi";
 
 const ExpenseList = ({
@@ -35,10 +37,8 @@ const ExpenseList = ({
         })}
       </ul>
       {expenses.length > 0 && (
-        <button className="btn btn-danger" onClick={clearItems}>
-          {" "}
-          borrar todo
-          <IoMdTrash className="btn-icon" />
+        <button className={`btn ${theme} btn-danger`} onClick={clearItems}>
+          Eliminar todo
         </button>
       )}
     </>

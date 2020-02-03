@@ -19,7 +19,7 @@ const ExpenseForm = ({
           className={`${theme} form-control`}
           id="charge"
           name="charge"
-          placeholder="gasto"
+          placeholder="Gasto"
           value={charge}
           onChange={handleCharge}
         />
@@ -31,12 +31,12 @@ const ExpenseForm = ({
           className={`${theme} form-control`}
           id="amount"
           name="amount"
-          placeholder="cuanto"
+          placeholder="Cuanto"
           value={amount}
           onChange={handleAmount}
         />
       </div>
-      <button type="submit" className="btn">
+      <button type="submit" className={`btn ${theme}`}>
         {edit ? "Editar" : "Guardar"}
       </button>
     </form>

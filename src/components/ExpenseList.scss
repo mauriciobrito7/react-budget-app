@@ -1,0 +1,13 @@
+@import "../scss/_vars.scss";
+.list {
+    &-empty {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: $gutter * 2 0 !important;
+    }
+    &-empty__title {
+        text-align: center;
+        color: $lighter-grey;
+    }
+}

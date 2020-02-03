@@ -8,7 +8,6 @@ $light: 300;
 $normal: 400;
 $medium: 500;
 $bold: 700;
-
 // Gutter
 $gutter: 1em;
 $radius: 8px;
@@ -28,13 +27,12 @@ $x-large: 1400px;
 */
 
 @import url("https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,500,700,700i&display=swap");
-$font-text: "Muli", sans-serif;
-
+$font-text: "Muli",
+sans-serif;
 $font-size: em(16px);
 $h3-size: $font-size * 1.15;
 $h2-size: $font-size * 1.35;
 $h1-size: $font-size * 1.7;
-
 $darker-grey: #404e5a;
 $dark-grey: #4e5d6a;
 $medium-grey: #748a9d;
@@ -42,4 +40,17 @@ $grey: #a6bcd0;
 $light-grey: #dbe2ed;
 $lighter-grey: #f0f4f8;
 $white: #ffffff;
-$primary: #8c14fc;
+$danger: #f22613;
+$success: #00e640;
+$dark-background: #131419;
+$darker-shadow: #08080b;
+$lighter-shadow: #1e2028;
+$primary: #03a9f4;
+$press-shadow: inset 4px 4px 6px $darker-shadow,
+inset -4px -4px 6px $lighter-shadow;
+$flat-shadow: 4px 4px 6px $darker-shadow,
+-4px -4px 6px $lighter-shadow;
+$special-gradient: linear-gradient(to right,
+#40e0d0,
+#ff8c00,
+#ff0080);

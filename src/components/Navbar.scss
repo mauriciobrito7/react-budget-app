@@ -1,0 +1,28 @@
+@import "../scss/_vars.scss";
+.navbar {
+    width: 100%;
+    background: $primary;
+    height: 50px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    &.dark {
+        background: transparent;
+    }
+    &-menu.dark {
+        background: $dark-background;
+        box-shadow: $flat-shadow;
+        // background: linear-gradient(145deg, #111217, #14151b);
+        // box-shadow: 5px 5px 10px #101115, -5px -5px 10px #16171d;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 8px 8px 0px 0px;
+        height: 100%;
+    }
+    .home {}
+    .new {
+        color: $primary;
+    }
+}

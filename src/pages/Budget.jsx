@@ -5,7 +5,8 @@ import "./Budget.scss";
 import ExpenseForm from "../components/ExpenseForm";
 import ExpenseList from "../components/ExpenseList";
 import Alert from "../components/Alert";
-import FloatMessage from "../components/FloatMessage";
+import { MdWbSunny } from "react-icons/md";
+import { IoMdMoon } from "react-icons/io";
 
 function Budget({
   edit,
@@ -25,10 +26,16 @@ function Budget({
   return (
     <>
       {alert.show && <Alert type={alert.type} text={alert.text} />}
-      <button onClick={handleTheme}>modo nocturno</button>
-      <h1 className="title">Presupuesto</h1>
+      <button className={`btn btn-circle ${theme}`} onClick={handleTheme}>
+        {theme === "" ? (
+          <IoMdMoon className="icon-custom" />
+        ) : (
+          <MdWbSunny className="icon-custom" />
+        )}
+      </button>
+      <h1 className="title">Gastos</h1>
       <main className="App">
-        <ExpenseForm
+        {/* <ExpenseForm
           edit={edit}
           charge={charge}
           amount={amount}
@@ -36,7 +43,7 @@ function Budget({
           handleAmount={handleAmount}
           handleSubmit={handleSubmit}
           theme={theme}
-        />
+        /> */}
         <ExpenseList
           expenses={expenses}
           clearItems={clearItems}
@@ -45,7 +52,6 @@ function Budget({
           theme={theme}
         />
       </main>
-      <FloatMessage expenses={expenses} />
     </>
   );
 }
