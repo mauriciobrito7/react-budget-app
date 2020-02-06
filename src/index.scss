@@ -11,12 +11,12 @@ html {
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     color: $dark-grey;
-    transition: 0.3s ease all;
 }
 
 body {
     overflow-x: hidden;
-    background: $white;
+    background: $light-background;
+    //transition: 0.3s ease all;
     &.dark {
         background: $dark-background;
     }
@@ -139,11 +139,70 @@ table {
 input {
     width: 100%;
     height: 50px;
-    background: $lighter-grey;
+    background: $light-background;
+    box-shadow: $press-shadow;
     border: none;
     border-radius: $radius;
     margin-bottom: $gutter !important;
     color: $primary;
+    font-weight: $bold;
+    caret-color: $primary;
+    padding: $gutter;
+    caret-color: $grey;
+    &:focus {
+        outline: 1px solid $primary;
+    }
+    &.dark {
+        background: $dark-background;
+        box-shadow: $press-shadow-dark;
+        &:focus {
+            outline: 1px solid $primary;
+            background: $dark-background;
+        }
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus {
+            background: $dark-background;
+            -webkit-text-fill-color: $primary;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    }
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+        -webkit-text-fill-color: $primary;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+    &::-webkit-input-placeholder {
+        color: $grey;
+        font-weight: $medium;
+    }
+}
+
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover,
+// input:-webkit-autofill:focus,
+// textarea:-webkit-autofill,
+// textarea:-webkit-autofill:hover,
+// textarea:-webkit-autofill:focus,
+// select:-webkit-autofill,
+// select:-webkit-autofill:hover,
+// select:-webkit-autofill:focus {
+//     border: none;
+//     -webkit-text-fill-color: $primary;
+//     -webkit-text-stroke-width: initial;
+// }
+textarea {
+    width: 100%;
+    background: $light-background;
+    box-shadow: $press-shadow;
+    border: none;
+    border-radius: $radius;
+    margin-bottom: $gutter !important;
+    color: $primary;
+    font-family: $font-text;
+    font-weight: $bold;
+    caret-color: $primary;
     padding: $gutter;
     caret-color: $grey;
     &:focus {
@@ -155,12 +214,10 @@ input {
     }
     &.dark {
         background: $dark-background;
-        color: $primary;
-        font-weight: $bold;
-        box-shadow: $press-shadow;
-        caret-color: $primary;
+        box-shadow: $press-shadow-dark;
         &:focus {
             outline: 1px solid $primary;
+            background: $dark-background;
         }
     }
 }
@@ -168,15 +225,19 @@ input {
 button {
     &.btn {
         height: 50px;
-        background: $primary;
+        background: $light-background;
+        box-shadow: $flat-shadow;
         border: none;
         border-radius: $radius * 6;
         display: flex;
         align-items: center;
         justify-content: center;
         width: 100%;
-        color: $white;
+        color: $grey;
         font-weight: $bold;
+        &:active {
+            box-shadow: $press-shadow;
+        }
         &:focus {
             outline: transparent;
         }
@@ -193,9 +254,6 @@ button {
         &-circle {
             width: 40px !important;
             height: 40px !important;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             &__small {
                 width: 30px;
                 height: 30px;
@@ -204,10 +262,10 @@ button {
     }
     &.dark {
         background: $dark-background;
-        box-shadow: $flat-shadow;
+        box-shadow: $flat-shadow-dark;
         color: $white;
         &:active {
-            box-shadow: $press-shadow;
+            box-shadow: $press-shadow-dark;
         }
     }
 }

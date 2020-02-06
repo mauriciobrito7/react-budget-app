@@ -1,12 +1,13 @@
 @import "../scss/_vars.scss";
 .item.dark {
     background: $dark-background !important;
-    box-shadow: $flat-shadow;
+    box-shadow: $flat-shadow-dark;
     color: $white;
 }
 
 .item {
-    background: $lighter-grey;
+    background: $light-background;
+    box-shadow: $flat-shadow;
     border-radius: $radius;
     display: flex;
     flex-wrap: wrap;

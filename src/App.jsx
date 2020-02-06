@@ -7,25 +7,41 @@ import BudgetContainer from "./pages/BudgetContainer";
 
 // Components
 import Layout from "./components/Layout";
+import ExpenseNew from "./pages/ExpenseNew";
+
+// Theme Context
+export const ThemeContext = React.createContext();
+
+// Initial Theme
+const initialTheme = localStorage.getItem("theme")
+  ? localStorage.getItem("theme")
+  : "";
 
 function App() {
   //edit theme
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(initialTheme);
 
   // handle theme
   const handleTheme = () => {
-    theme === "" ? setTheme("dark") : setTheme("");
-    console.log(theme);
+    setTheme(prevValue => {
+      const newValue = prevValue === "" ? "dark" : "";
+      localStorage.setItem("theme", newValue);
+      return newValue;
+    });
   };
+
   return (
     <body style={{ height: "100vh" }} className={`${theme}`}>
       <BrowserRouter>
-        <Layout theme={theme}>
-          <Switch>
-            <BudgetContainer theme={theme} handleTheme={handleTheme} />
-            <Route exact path="/" component={BudgetContainer} />
-          </Switch>
-        </Layout>
+        <ThemeContext.Provider value={{ theme, handleTheme }}>
+          <Layout>
+            <Switch>
+              {/* <BudgetContainer theme={theme} handleTheme={handleTheme} /> */}
+              <Route exact path="/" component={BudgetContainer} />
+              <Route exact path="/new" component={ExpenseNew} />
+            </Switch>
+          </Layout>
+        </ThemeContext.Provider>
       </BrowserRouter>
     </body>
   );

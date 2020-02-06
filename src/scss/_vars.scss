@@ -42,15 +42,23 @@ $lighter-grey: #f0f4f8;
 $white: #ffffff;
 $danger: #f22613;
 $success: #00e640;
+// light mode
+$light-background: #f0f4f8;
+$light-shadow-lighter: #ffffff;
+$light-shadow-darker: #cccfd3;
+$flat-shadow: 4px 4px 6px $light-shadow-darker,
+-4px -4px 6px $light-shadow-lighter;
+$press-shadow: inset 4px 4px 6px $light-shadow-darker,
+inset -4px -4px 6px $light-shadow-lighter;
+// dark mode
 $dark-background: #131419;
 $darker-shadow: #08080b;
 $lighter-shadow: #1e2028;
 $primary: #03a9f4;
-$press-shadow: inset 4px 4px 6px $darker-shadow,
+$press-shadow-dark: inset 4px 4px 6px $darker-shadow,
 inset -4px -4px 6px $lighter-shadow;
-$flat-shadow: 4px 4px 6px $darker-shadow,
+$flat-shadow-dark: 4px 4px 6px $darker-shadow,
 -4px -4px 6px $lighter-shadow;
 $special-gradient: linear-gradient(to right,
-#40e0d0,
-#ff8c00,
+$primary,
 #ff0080);

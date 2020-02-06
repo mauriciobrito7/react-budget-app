@@ -1,20 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 //components
 import ExpenseItem from "./ExpenseItem";
 
 // styles
 import "./ExpenseList.scss";
+import { ThemeContext } from "../App";
 
 // Icons
 import { FiEdit } from "react-icons/fi";
 
-const ExpenseList = ({
-  expenses,
-  clearItems,
-  handleDelete,
-  handleEdit,
-  theme
-}) => {
+const ExpenseList = ({ expenses, clearItems, handleDelete, handleEdit }) => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <>
       <ul className="list">

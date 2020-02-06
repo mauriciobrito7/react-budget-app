@@ -81,7 +81,6 @@ function BudgetContainer({ theme, handleTheme }) {
         setExpenses([...expenses, newExpense]);
         handleAlert("success", "el gasto fue agregado");
       } else {
-        //falta un paso
         let tempExpenses = expenses.map(expense => {
           return expense.id === id ? { ...expense, charge, amount } : expense;
         });
@@ -135,8 +134,6 @@ function BudgetContainer({ theme, handleTheme }) {
         handleDelete={handleDelete}
         handleEdit={handleEdit}
         alert={alert}
-        handleTheme={handleTheme}
-        theme={theme}
       />
     </>
   );

@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 
 // Styles
 import "./ExpenseItem.scss";
+import { ThemeContext } from "../App";
 
 // Icons
 import { IoMdCreate } from "react-icons/io";
 import { IoMdTrash } from "react-icons/io";
 
-const ExpenseItem = ({ expense, handleDelete, handleEdit, theme }) => {
+const ExpenseItem = ({ expense, handleDelete, handleEdit }) => {
   const { id, charge, amount } = expense;
+  const { theme } = useContext(ThemeContext);
+
   return (
     <li className={`item ${theme}`}>
       <div className="info">

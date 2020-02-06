@@ -1,6 +1,8 @@
 @import "../scss/_vars.scss";
 .title {
     text-align: left;
-    color: $primary;
+    color: transparent;
+    background: $special-gradient !important;
+    background-clip: text !important;
     margin: $gutter 0 !important;
 }
