@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import { SAVE, DELETE, DELETE_ALL, GET, EDIT } from "./types";
 // Valores iniciales
 const initialExpenses = localStorage.getItem("expenses")
   ? JSON.parse(localStorage.getItem("expenses"))
@@ -11,18 +11,17 @@ export const expenseContext = React.createContext(initialExpenses);
 // Reducer
 const reducer = (expenses, action) => {
   switch (action.type) {
-    case "SAVE":
+    case SAVE:
       return save(expenses, action.expense);
-    case "DELETE":
+    case DELETE:
       return deleteOne(expenses, action.id);
-    case "DELETE_ALL":
+    case DELETE_ALL:
       return deleteAll(expenses);
-    case "GET":
-      return get(expenses, action.id);
-    case "EDIT":
-      return edit(expenses, action.id, action.charge, action.amount);
+    case EDIT:
+      return edit(expenses, action.editedExpense);
 
     default:
+      console.log("No ha hecho una selección correcta");
       return expenses;
   }
 };
@@ -38,14 +37,10 @@ const deleteOne = (expenses, id) => {
 const deleteAll = () => {
   return [];
 };
-// get an expense
-const get = (expenses, id) => {
-  return expenses.find(expense => expense.id === id);
-};
 // edit an expense
-const edit = (expenses, id, charge, amount) => {
+const edit = (expenses, editedExpense) => {
   let tempExpenses = expenses.map(expense => {
-    return expense.id === id ? { ...expense, charge, amount } : expense;
+    return expense.id === editedExpense.id ? editedExpense : expense;
   });
   return tempExpenses;
 };

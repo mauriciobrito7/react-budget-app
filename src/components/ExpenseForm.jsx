@@ -1,99 +1,164 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./ExpenseForm.scss";
+import uuid from "uuid/v4";
+// Context
 import { ThemeContext } from "../App";
 import { expenseContext } from "../context/ExpenseContext/ExpenseContext";
+// Types
+import {
+  SAVE,
+  DELETE,
+  DELETE_ALL,
+  EDIT
+} from "../context/ExpenseContext/types";
+// Components
+import Alert from "./Alert";
 
-const ExpenseForm = () =>
-  // {
-  //   // edit,
-  //   // charge,
-  //   // amount,
-  //   // handleCharge,
-  //   // handleAmount,
-  //   // handleSubmit
-  // }
-  {
-    // Theme
-    const { theme } = useContext(ThemeContext);
-    const { expenses, dispatch } = useContext(expenseContext);
-    const newExpense = {
-      id: 1,
-      charge: "prueba",
-      amount: 1
-    };
+const ExpenseForm = () => {
+  // Contexts
+  const { theme } = useContext(ThemeContext);
+  const { expenses, dispatch } = useContext(expenseContext);
 
-    return (
-      <div>
-        <button onClick={() => dispatch({ type: "SAVE", expense: newExpense })}>
-          mi boton
-        </button>
-        <button
-          onClick={() => dispatch({ type: "DELETE_ALL", expense: newExpense })}
-        >
-          Borrar todo
-        </button>
-        <button onClick={() => dispatch({ type: "DELETE", id: 1 })}>
-          Borrar uno
-        </button>
+  // single expense
+  const [expense, setExpense] = useState({
+    id: uuid(),
+    charge: "",
+    amount: "",
+    label: "",
+    description: ""
+  });
 
-        <button
-          onClick={() =>
-            dispatch({
-              type: "EDIT",
-              id: 1,
-              charge: "prueba2",
-              amount: 2
-            })
-          }
-        >
-          actualizar uno
-        </button>
+  // alert
+  const [alert, setAlert] = useState({ show: false });
+  // edit
+  const [edit, setEdit] = useState(false);
+  // edit item
+  const [id, setId] = useState(0);
 
-        <form className="form">
-          {/* {console.log(expenseContext.expenses.map(expense => expense))}
-        {console.log(expenseContext.dispatch("HANDLE_SUBMIT"))} */}
-          <div className="form-group">
-            {/*To conect the value with the variable */}
-            <input
-              type="text"
-              className={`${theme} form-control`}
-              // id="charge"
-              // name="charge"
-              // placeholder="Gasto"
-              // value={charge}
-              // onChange={handleCharge}
-            />
-          </div>
-          <div className="form-group">
-            {/*To conect the value with the variable */}
-            <input
-              type="number"
-              className={`${theme} form-control`}
-              // id="amount"
-              // name="amount"
-              // placeholder="Cuanto"
-              // value={amount}
-              // onChange={handleAmount}
-            />
-            <textarea
-              placeholder="Descripción"
-              className={`${theme} form-control`}
-              id=""
-              cols="30"
-              rows="10"
-            ></textarea>
-          </div>
-
-          <button type="submit" className={`btn ${theme}`}>
-            {true ? "Editar" : "Guardar"}
-          </button>
-
-          {expenses.map(expense => (
-            <li key={expense.id}>{expense.charge}</li>
-          ))}
-        </form>
-      </div>
-    );
+  // ********** functionality *********
+  const handleCharge = e => {
+    setExpense({ ...expense, charge: e.target.value });
   };
+
+  const handleAmount = e => {
+    setExpense({ ...expense, amount: e.target.value });
+  };
+
+  const handleLabel = e => {
+    setExpense({ ...expense, label: e.target.value });
+  };
+
+  const handleDescription = e => {
+    setExpense({ ...expense, description: e.target.value });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (expense.charge !== "" && expense.amount > 0) {
+      if (!edit) {
+        // from our reducer
+        dispatch({ type: SAVE, expense });
+        handleAlert("success", "el gasto fue agregado");
+      } else {
+        // from our reducer
+        dispatch({ type: EDIT, editedExpense: expense });
+        setEdit(false);
+        handleAlert("success", "el gasto fue editado");
+      }
+      setExpense({
+        id: "",
+        charge: "",
+        amount: "",
+        label: "",
+        description: ""
+      });
+    } else {
+      // handle alert called
+      handleAlert("danger", "el gasto tiene que ser mayor a 0");
+    }
+  };
+
+  // handle edit
+  const handleEdit = (e, id) => {
+    e.preventDefault();
+    setEdit(true);
+    let expense = expenses.find(expense => expense.id === id);
+    setExpense(expense);
+  };
+
+  const handleAlert = (type, text) => {
+    setAlert({ show: true, type, text });
+
+    // hide alert past 3 seconds
+    setTimeout(() => {
+      setAlert({ show: false });
+    }, 3000);
+  };
+
+  return (
+    <div>
+      {alert.show && <Alert type={alert.type} text={alert.text} />}
+      <form className="form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          {/*To conect the value with the variable */}
+          <input
+            type="text"
+            className={`${theme} form-control`}
+            id="charge"
+            name="charge"
+            placeholder="Gasto"
+            value={expense.charge}
+            onChange={handleCharge}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="number"
+            className={`${theme} form-control`}
+            id="amount"
+            name="amount"
+            placeholder="Cuanto"
+            value={expense.amount}
+            onChange={handleAmount}
+          />
+        </div>
+        <div className="form-control">
+          <input
+            type="text"
+            className={`${theme} form-control`}
+            id="amount"
+            name="amount"
+            placeholder="Clasificación"
+            value={expense.label}
+            onChange={handleLabel}
+          />
+        </div>
+        <div className="form-control">
+          <textarea
+            placeholder="Descripción"
+            className={`${theme} form-control`}
+            id=""
+            cols="30"
+            rows="10"
+            style={{ resize: "none" }}
+            value={expense.description}
+            onChange={handleDescription}
+          ></textarea>
+        </div>
+
+        <button type="submit" className={`btn ${theme}`}>
+          {edit ? "Editar" : "Guardar"}
+        </button>
+
+        {expenses.map(expense => (
+          <li key={expense.id}>
+            {expense.id}
+            <button onClick={e => handleEdit(e, expense.id)}>editar</button>
+          </li>
+        ))}
+      </form>
+    </div>
+  );
+};
 
 export default ExpenseForm;
