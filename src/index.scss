@@ -274,3 +274,12 @@ button {
     width: 20px;
     height: 20px;
 }
+
+.title {
+    text-align: left;
+    color: transparent;
+    width: 60%;
+    background: $special-gradient !important;
+    background-clip: text !important;
+    margin: $gutter 0 !important;
+}

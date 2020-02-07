@@ -8,9 +8,10 @@
 .theme {
     margin: 0px !important;
     position: absolute;
+    top: $gutter*1.8;
     right: $gutter;
-    fill: $special-gradient;
     cursor: pointer;
+    z-index: 1000;
 }
 
 .children {

@@ -6,8 +6,16 @@ import "./Navbar.scss";
 
 // Icons
 import { MdHome, MdAdd, MdInsertChart } from "react-icons/md";
+import add from "../svg/add.svg";
 
 function Navbar({ theme }) {
+  // const [route, setRoute] = useState(window.location.pathname);
+
+  // useEffect(() => {
+  //   console.log(route);
+  //   setRoute(window.location.pathname);
+  // }, [route]);
+
   return (
     <div className={`navbar ${theme}`}>
       <div className={`navbar-menu ${theme}`}>
@@ -18,7 +26,7 @@ function Navbar({ theme }) {
         </Link>
         <Link to="new">
           <button className={` btn btn-circle ${theme}`}>
-            <MdAdd className="new icon-custom" />
+            <img src={add} alt="button" className="new icon-custom" />
           </button>
         </Link>
         <button className={`s btn btn-circle ${theme}`}>

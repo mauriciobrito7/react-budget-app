@@ -4,13 +4,19 @@ import ExpenseItem from "./ExpenseItem";
 
 // styles
 import "./ExpenseList.scss";
-import { ThemeContext } from "../App";
 
+// Contexts
+import { ThemeContext } from "../App";
+import { expenseContext } from "../context/ExpenseContext/ExpenseContext";
+// Types
+import { DELETE_ALL, DELETE } from "../context/ExpenseContext/types";
 // Icons
 import { FiEdit } from "react-icons/fi";
 
-const ExpenseList = ({ expenses, clearItems, handleDelete, handleEdit }) => {
+const ExpenseList = () => {
+  // Contexts
   const { theme } = useContext(ThemeContext);
+  const { expenses, dispatch } = useContext(expenseContext);
 
   return (
     <>
@@ -26,15 +32,18 @@ const ExpenseList = ({ expenses, clearItems, handleDelete, handleEdit }) => {
             <ExpenseItem
               key={expense.id}
               expense={expense}
-              handleDelete={handleDelete}
-              handleEdit={handleEdit}
+              //handleDelete={handleDelete}
+              //handleEdit={handleEdit}
               theme={theme}
             />
           );
         })}
       </ul>
       {expenses.length > 0 && (
-        <button className={`btn ${theme} btn-danger`} onClick={clearItems}>
+        <button
+          className={`btn ${theme} btn-danger`}
+          onClick={() => dispatch({ type: DELETE_ALL, expenses })}
+        >
           Eliminar todo
         </button>
       )}

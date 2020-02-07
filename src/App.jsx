@@ -3,12 +3,14 @@ import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // pages
-import BudgetContainer from "./pages/BudgetContainer";
+import Expenses from "./pages/Expenses";
+import ExpenseNew from "./pages/ExpenseNew";
 
 // Components
 import Layout from "./components/Layout";
-import ExpenseNew from "./pages/ExpenseNew";
 
+// Contexts
+import ExpenseContext from "./context/ExpenseContext/ExpenseContext";
 // Theme Context
 export const ThemeContext = React.createContext();
 
@@ -34,13 +36,15 @@ function App() {
     <body style={{ height: "100vh" }} className={`${theme}`}>
       <BrowserRouter>
         <ThemeContext.Provider value={{ theme, handleTheme }}>
-          <Layout>
-            <Switch>
-              {/* <BudgetContainer theme={theme} handleTheme={handleTheme} /> */}
-              <Route exact path="/" component={BudgetContainer} />
-              <Route exact path="/new" component={ExpenseNew} />
-            </Switch>
-          </Layout>
+          <ExpenseContext>
+            <Layout>
+              <Switch>
+                {/* <BudgetContainer theme={theme} handleTheme={handleTheme} /> */}
+                <Route exact path="/" component={Expenses} />
+                <Route exact path="/new" component={ExpenseNew} />
+              </Switch>
+            </Layout>
+          </ExpenseContext>
         </ThemeContext.Provider>
       </BrowserRouter>
     </body>

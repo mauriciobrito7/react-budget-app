@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { SAVE, DELETE, DELETE_ALL, GET, EDIT } from "./types";
+import { SAVE, DELETE, DELETE_ALL, EDIT } from "./types";
 // Valores iniciales
 const initialExpenses = localStorage.getItem("expenses")
   ? JSON.parse(localStorage.getItem("expenses"))

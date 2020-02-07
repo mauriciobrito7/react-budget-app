@@ -2,13 +2,14 @@ import React from "react";
 
 // Components
 import ExpenseForm from "../components/ExpenseForm";
-import ExpenseContext from "../context/ExpenseContext/ExpenseContext";
 
 function ExpenseNew() {
   return (
-    <ExpenseContext>
+    <>
+      <h1 className="title">Nuevo gasto</h1>
+
       <ExpenseForm />
-    </ExpenseContext>
+    </>
   );
 }
 

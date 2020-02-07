@@ -1,18 +1,15 @@
 import React, { useContext, useState } from "react";
 import "./ExpenseForm.scss";
 import uuid from "uuid/v4";
-// Context
+// Contexts
 import { ThemeContext } from "../App";
 import { expenseContext } from "../context/ExpenseContext/ExpenseContext";
 // Types
-import {
-  SAVE,
-  DELETE,
-  DELETE_ALL,
-  EDIT
-} from "../context/ExpenseContext/types";
+import { SAVE, EDIT } from "../context/ExpenseContext/types";
 // Components
 import Alert from "./Alert";
+// Icons
+// import shapeDark from "../svg/shape-dark.svg";
 
 const ExpenseForm = () => {
   // Contexts
@@ -32,8 +29,8 @@ const ExpenseForm = () => {
   const [alert, setAlert] = useState({ show: false });
   // edit
   const [edit, setEdit] = useState(false);
-  // edit item
-  const [id, setId] = useState(0);
+  // // edit item
+  // const [id, setId] = useState(0);
 
   // ********** functionality *********
   const handleCharge = e => {
@@ -98,6 +95,7 @@ const ExpenseForm = () => {
   return (
     <div>
       {alert.show && <Alert type={alert.type} text={alert.text} />}
+      <div className={` `}></div>
       <form className="form" onSubmit={handleSubmit}>
         <div className="form-group">
           {/*To conect the value with the variable */}
@@ -126,8 +124,8 @@ const ExpenseForm = () => {
           <input
             type="text"
             className={`${theme} form-control`}
-            id="amount"
-            name="amount"
+            id="label"
+            name="label"
             placeholder="Clasificación"
             value={expense.label}
             onChange={handleLabel}
@@ -149,13 +147,6 @@ const ExpenseForm = () => {
         <button type="submit" className={`btn ${theme}`}>
           {edit ? "Editar" : "Guardar"}
         </button>
-
-        {expenses.map(expense => (
-          <li key={expense.id}>
-            {expense.id}
-            <button onClick={e => handleEdit(e, expense.id)}>editar</button>
-          </li>
-        ))}
       </form>
     </div>
   );
