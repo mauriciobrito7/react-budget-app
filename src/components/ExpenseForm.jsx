@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./ExpenseForm.scss";
+import { useHistory } from "react-router-dom";
 import uuid from "uuid/v4";
 // Contexts
 import { ThemeContext } from "../App";
@@ -16,6 +17,8 @@ const ExpenseForm = () => {
   const { theme } = useContext(ThemeContext);
   const { expenses, dispatch } = useContext(expenseContext);
 
+  // History
+  let history = useHistory();
   // single expense
   const [expense, setExpense] = useState({
     id: uuid(),
@@ -56,6 +59,8 @@ const ExpenseForm = () => {
         // from our reducer
         dispatch({ type: SAVE, expense });
         handleAlert("success", "el gasto fue agregado");
+        // Redirect to "/"
+        history.push("/");
       } else {
         // from our reducer
         dispatch({ type: EDIT, editedExpense: expense });

@@ -9,7 +9,7 @@ import "./ExpenseList.scss";
 import { ThemeContext } from "../App";
 import { expenseContext } from "../context/ExpenseContext/ExpenseContext";
 // Types
-import { DELETE_ALL, DELETE } from "../context/ExpenseContext/types";
+import { DELETE_ALL } from "../context/ExpenseContext/types";
 // Icons
 import { FiEdit } from "react-icons/fi";
 
@@ -29,13 +29,7 @@ const ExpenseList = () => {
         )}
         {expenses.map(expense => {
           return (
-            <ExpenseItem
-              key={expense.id}
-              expense={expense}
-              //handleDelete={handleDelete}
-              //handleEdit={handleEdit}
-              theme={theme}
-            />
+            <ExpenseItem key={expense.id} expense={expense} theme={theme} />
           );
         })}
       </ul>
