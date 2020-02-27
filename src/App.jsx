@@ -42,6 +42,7 @@ function App() {
                 {/* <BudgetContainer theme={theme} handleTheme={handleTheme} /> */}
                 <Route exact path="/" component={Expenses} />
                 <Route exact path="/new" component={ExpenseNew} />
+                <Route exact path="/new/:expenseId" component={ExpenseNew} />
               </Switch>
             </Layout>
           </ExpenseContext>

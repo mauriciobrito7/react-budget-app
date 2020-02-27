@@ -1,16 +1,34 @@
 import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 
 // Styles
 import "./ExpenseItem.scss";
+// Contexts
 import { ThemeContext } from "../App";
+import { expenseContext } from "../context/ExpenseContext/ExpenseContext";
+import { DELETE } from "../context/ExpenseContext/types";
 
 // Icons
 import { IoMdCreate } from "react-icons/io";
 import { IoMdTrash } from "react-icons/io";
 
 const ExpenseItem = ({ expense }) => {
-  const { charge, amount, label, description } = expense;
+  const { id, charge, amount, label, description, date } = expense;
+  // Contexts
+  const { dispatch } = useContext(expenseContext);
   const { theme } = useContext(ThemeContext);
+
+  // History
+  const history = useHistory();
+
+  // Events
+  const handleDelete = () => {
+    dispatch({ type: DELETE, id });
+  };
+
+  const handleEdit = () => {
+    history.push(`new/${id}`);
+  };
 
   return (
     <li className={`item ${theme}`}>
@@ -21,11 +39,17 @@ const ExpenseItem = ({ expense }) => {
       <div className="description">{description}</div>
       <div className="menu">
         <span className="label">{label}</span>
-        <span className="date">20/01/2020</span>
-        <button className={`btn btn-circle__small ${theme}`}>
+        <span className="date">{date}</span>
+        <button
+          onClick={() => handleEdit()}
+          className={`btn btn-circle__small ${theme}`}
+        >
           <IoMdCreate className="icon-custom btn-edit" />
         </button>
-        <button className={`btn btn-circle__small ${theme}`}>
+        <button
+          onClick={() => handleDelete()}
+          className={`btn btn-circle__small ${theme}`}
+        >
           <IoMdTrash className="icon-custom btn-delete" />
         </button>
       </div>

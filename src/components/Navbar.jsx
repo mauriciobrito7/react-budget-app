@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./Navbar.scss";
 
 // Icons
-import { MdHome, MdAdd, MdInsertChart } from "react-icons/md";
+import { MdHome, MdInsertChart } from "react-icons/md";
 import add from "../svg/add.svg";
 
 function Navbar({ theme }) {
@@ -24,7 +24,7 @@ function Navbar({ theme }) {
             <MdHome className="home icon-custom" />
           </button>
         </Link>
-        <Link to="new">
+        <Link to="/new">
           <button className={` btn btn-circle ${theme}`}>
             <img src={add} alt="button" className="new icon-custom" />
           </button>

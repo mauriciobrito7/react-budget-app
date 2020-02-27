@@ -143,7 +143,6 @@ input {
     box-shadow: $press-shadow;
     border: none;
     border-radius: $radius;
-    margin-bottom: $gutter !important;
     color: $primary;
     font-weight: $bold;
     caret-color: $primary;
@@ -198,7 +197,6 @@ textarea {
     box-shadow: $press-shadow;
     border: none;
     border-radius: $radius;
-    margin-bottom: $gutter !important;
     color: $primary;
     font-family: $font-text;
     font-weight: $bold;

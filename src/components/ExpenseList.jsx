@@ -24,7 +24,9 @@ const ExpenseList = () => {
         {expenses.length === 0 && (
           <div className="list-empty">
             <FiEdit className="btn-icon icon-custom" />
-            <h3 className="list-empty__title">No hay ningún gasto</h3>
+            <h2 className={`list-empty__title ${theme}`}>
+              No hay ningún gasto
+            </h2>
           </div>
         )}
         {expenses.map(expense => {

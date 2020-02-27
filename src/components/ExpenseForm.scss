@@ -1,6 +1,35 @@
 @import "../scss/_vars.scss";
 .form {
-    .form-control {}
+    .form-control {
+        margin-bottom: $gutter !important;
+    }
+}
+
+.calendar {
+    background: $light-background !important;
+    border: none !important;
+    border-radius: $gutter * 0.5;
+    box-shadow: $flat-shadow;
+    color: $grey;
+    &.dark {
+        background: $dark-background !important;
+        box-shadow: $flat-shadow-dark !important;
+    }
+    .react-calendar__navigation button {
+        color: $grey;
+    }
+    .react-calendar__month-view__days__day--neighboringMonth {
+        color: $light-grey !important;
+    }
+    .react-calendar__month-view__days__day {
+        color: $medium-grey;
+    }
+    .react-calendar__month-view__days__day--weekend {
+        color: $danger;
+    }
+    .react-calendar__tile--active:enabled:hover {
+        color: $white !important;
+    }
 }
 
 .logo {
@@ -8,8 +37,8 @@
     height: 55px;
     background: $light-background;
     position: relative;
-    margin-top: $gutter*3 !important;
-    margin-bottom: $gutter*3 !important;
+    margin-top: $gutter * 3 !important;
+    margin-bottom: $gutter * 3 !important;
     &:before {
         content: "";
         position: absolute;

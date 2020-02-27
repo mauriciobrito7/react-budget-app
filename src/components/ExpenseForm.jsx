@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./ExpenseForm.scss";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import uuid from "uuid/v4";
 // Contexts
 import { ThemeContext } from "../App";
@@ -9,6 +9,7 @@ import { expenseContext } from "../context/ExpenseContext/ExpenseContext";
 import { SAVE, EDIT } from "../context/ExpenseContext/types";
 // Components
 import Alert from "./Alert";
+import Calendar from "react-calendar";
 // Icons
 // import shapeDark from "../svg/shape-dark.svg";
 
@@ -18,14 +19,18 @@ const ExpenseForm = () => {
   const { expenses, dispatch } = useContext(expenseContext);
 
   // History
-  let history = useHistory();
+  const history = useHistory();
+  // Params
+  const slug = useParams();
+
   // single expense
   const [expense, setExpense] = useState({
     id: uuid(),
     charge: "",
     amount: "",
     label: "",
-    description: ""
+    description: "",
+    date: ""
   });
 
   // alert
@@ -33,7 +38,9 @@ const ExpenseForm = () => {
   // edit
   const [edit, setEdit] = useState(false);
   // // edit item
-  // const [id, setId] = useState(0);
+  const [id] = useState(slug.expenseId ? slug.expenseId : 0);
+
+  const [date, setDate] = useState(new Date());
 
   // ********** functionality *********
   const handleCharge = e => {
@@ -52,6 +59,13 @@ const ExpenseForm = () => {
     setExpense({ ...expense, description: e.target.value });
   };
 
+  const handleDate = date => {
+    setExpense({
+      ...expense,
+      date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+    });
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     if (expense.charge !== "" && expense.amount > 0) {
@@ -59,33 +73,30 @@ const ExpenseForm = () => {
         // from our reducer
         dispatch({ type: SAVE, expense });
         handleAlert("success", "el gasto fue agregado");
-        // Redirect to "/"
-        history.push("/");
       } else {
         // from our reducer
         dispatch({ type: EDIT, editedExpense: expense });
         setEdit(false);
         handleAlert("success", "el gasto fue editado");
       }
-      setExpense({
-        id: "",
-        charge: "",
-        amount: "",
-        label: "",
-        description: ""
-      });
+      // Redirect to "/"
+      history.push("/");
     } else {
       // handle alert called
       handleAlert("danger", "el gasto tiene que ser mayor a 0");
     }
   };
 
-  // handle edit
-  const handleEdit = (e, id) => {
-    e.preventDefault();
+  // // handle edit
+  const handleEdit = id => {
+    // change button
     setEdit(true);
-    let expense = expenses.find(expense => expense.id === id);
-    setExpense(expense);
+
+    // search expense to edit
+    let expenseToEdit = expenses.find(expense => expense.id === id);
+
+    // edit expense
+    setExpense(expenseToEdit);
   };
 
   const handleAlert = (type, text) => {
@@ -96,6 +107,22 @@ const ExpenseForm = () => {
       setAlert({ show: false });
     }, 3000);
   };
+
+  useEffect(() => {
+    if (slug.expenseId) {
+      handleEdit(id);
+    }
+    return () => {
+      setExpense({
+        id: "",
+        charge: "",
+        amount: "",
+        label: "",
+        description: ""
+      });
+      setEdit(false);
+    };
+  }, [slug.expenseId]);
 
   return (
     <div>
@@ -110,7 +137,7 @@ const ExpenseForm = () => {
             id="charge"
             name="charge"
             placeholder="Gasto"
-            value={expense.charge}
+            value={expense.charge || ""}
             onChange={handleCharge}
           />
         </div>
@@ -121,7 +148,7 @@ const ExpenseForm = () => {
             id="amount"
             name="amount"
             placeholder="Cuanto"
-            value={expense.amount}
+            value={expense.amount || ""}
             onChange={handleAmount}
           />
         </div>
@@ -132,7 +159,7 @@ const ExpenseForm = () => {
             id="label"
             name="label"
             placeholder="Clasificación"
-            value={expense.label}
+            value={expense.label || ""}
             onChange={handleLabel}
           />
         </div>
@@ -142,11 +169,19 @@ const ExpenseForm = () => {
             className={`${theme} form-control`}
             id=""
             cols="30"
-            rows="10"
+            rows="5"
             style={{ resize: "none" }}
-            value={expense.description}
+            value={expense.description || ""}
             onChange={handleDescription}
           ></textarea>
+        </div>
+        <div className="form-control">
+          <Calendar
+            className={`calendar ${theme}`}
+            onChange={handleDate}
+            value={date}
+            locale={"es-419"} // language
+          />
         </div>
 
         <button type="submit" className={`btn ${theme}`}>

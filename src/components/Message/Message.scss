@@ -1,0 +1,14 @@
+@import "../../scss/_vars.scss";
+.message {
+    width: 80%;
+    margin: 0 auto !important;
+    padding: $gutter * 0.5;
+    border-radius: $gutter * 0.5;
+    text-align: center;
+    box-shadow: $flat-shadow;
+    color: $grey;
+    &.dark {
+        background: $dark-background;
+        box-shadow: $flat-shadow-dark;
+    }
+}

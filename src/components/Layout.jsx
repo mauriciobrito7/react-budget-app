@@ -9,7 +9,7 @@ function Layout({ children }) {
   // Theme
   const { theme, handleTheme } = useContext(ThemeContext);
   return (
-    <React.Fragment>
+    <div className="main">
       <button className={`theme btn btn-circle ${theme}`} onClick={handleTheme}>
         {theme === "" ? (
           <IoMdMoon className="icon-custom" />
@@ -21,7 +21,7 @@ function Layout({ children }) {
         <div className="children">{children}</div>
         <Navbar theme={theme} />
       </div>
-    </React.Fragment>
+    </div>
   );
 }
 

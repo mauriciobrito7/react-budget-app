@@ -5,9 +5,14 @@
         justify-content: center;
         flex-wrap: wrap;
         margin: $gutter * 2 0 !important;
-    }
-    &-empty__title {
-        text-align: center;
-        color: $lighter-grey;
+        .icon-custom {
+            width: 140px;
+            height: 140px;
+            color: $grey;
+        }
+        &__title {
+            color: $grey;
+            text-align: center;
+        }
     }
 }
