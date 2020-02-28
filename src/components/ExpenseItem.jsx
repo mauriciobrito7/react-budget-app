@@ -1,5 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+
+// Components
+import Alert from "./Alert";
 
 // Styles
 import "./ExpenseItem.scss";
@@ -21,17 +24,40 @@ const ExpenseItem = ({ expense }) => {
   // History
   const history = useHistory();
 
+  // alert
+  const [alert, setAlert] = useState({
+    show: false
+  });
+
   // Events
   const handleDelete = () => {
     dispatch({ type: DELETE, id });
+    handleAlert("danger", "Gasto eliminado");
   };
 
   const handleEdit = () => {
     history.push(`new/${id}`);
   };
 
+  let idTimeoutAlert;
+  const handleAlert = (type, text) => {
+    setAlert({ show: true, type, text });
+
+    // hide alert past one second
+    return (idTimeoutAlert = setTimeout(() => {
+      setAlert({ show: false });
+    }, 1000));
+  };
+
+  // useEffect(() => {
+  //   return () => {
+  //     clearInterval(idTimeoutAlert);
+  //   };
+  // }, [alert]);
+
   return (
     <li className={`item ${theme}`}>
+      {alert.show && <Alert type={"success"} text={"alert.text"} />}
       <div className="info">
         <span className="expense">{charge}</span>
         <span className="amount">${amount}</span>

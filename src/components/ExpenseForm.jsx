@@ -42,6 +42,8 @@ const ExpenseForm = () => {
 
   const [date, setDate] = useState(new Date());
 
+  const [btnDisabled, setbtnDisabled] = useState(false);
+
   // ********** functionality *********
   const handleCharge = e => {
     setExpense({ ...expense, charge: e.target.value });
@@ -76,14 +78,11 @@ const ExpenseForm = () => {
       } else {
         // from our reducer
         dispatch({ type: EDIT, editedExpense: expense });
-        setEdit(false);
-        handleAlert("success", "el gasto fue editado");
+        handleAlert("success", "El gasto fue editado");
       }
-      // Redirect to "/"
-      history.push("/");
     } else {
       // handle alert called
-      handleAlert("danger", "el gasto tiene que ser mayor a 0");
+      handleAlert("danger", "El gasto tiene que ser mayor a 0");
     }
   };
 
@@ -99,13 +98,22 @@ const ExpenseForm = () => {
     setExpense(expenseToEdit);
   };
 
-  const handleAlert = (type, text) => {
-    setAlert({ show: true, type, text });
+  let idTimeoutAlert;
 
-    // hide alert past 3 seconds
-    setTimeout(() => {
+  const handleAlert = (type, text) => {
+    // show the message
+    setAlert({ show: true, type, text });
+    // the button is disabled to not create a copy
+    setbtnDisabled(true);
+
+    // hide alert past one second
+    idTimeoutAlert = setTimeout(() => {
       setAlert({ show: false });
-    }, 3000);
+      if (expense.amount > 0) {
+        // Redirect to "/"
+        history.push("/");
+      }
+    }, 1000);
   };
 
   useEffect(() => {
@@ -113,6 +121,7 @@ const ExpenseForm = () => {
       handleEdit(id);
     }
     return () => {
+      clearInterval(idTimeoutAlert);
       setExpense({
         id: "",
         charge: "",
@@ -184,7 +193,7 @@ const ExpenseForm = () => {
           />
         </div>
 
-        <button type="submit" className={`btn ${theme}`}>
+        <button disabled={btnDisabled} type="submit" className={`btn ${theme}`}>
           {edit ? "Editar" : "Guardar"}
         </button>
       </form>

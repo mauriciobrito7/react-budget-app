@@ -1,0 +1,24 @@
+@import "../scss/_vars.scss";
+.alert {
+    position: absolute;
+    top: $gutter;
+    left: 25vw;
+    width: 50%;
+    border-radius: 50px;
+    margin: 0 auto !important;
+    background: $light-background;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: $flat-shadow;
+    &-success {
+        color: $success;
+    }
+    &-danger {
+        color: $danger;
+    }
+    &.dark {
+        background: $dark-background;
+        box-shadow: $flat-shadow-dark;
+    }
+}
