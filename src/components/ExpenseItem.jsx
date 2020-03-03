@@ -44,16 +44,16 @@ const ExpenseItem = ({ expense }) => {
     setAlert({ show: true, type, text });
 
     // hide alert past one second
-    return (idTimeoutAlert = setTimeout(() => {
+    idTimeoutAlert = setTimeout(() => {
       setAlert({ show: false });
-    }, 1000));
+    }, 1000);
   };
 
-  // useEffect(() => {
-  //   return () => {
-  //     clearInterval(idTimeoutAlert);
-  //   };
-  // }, [alert]);
+  useEffect(() => {
+    return () => {
+      clearInterval(idTimeoutAlert);
+    };
+  }, [alert]);
 
   return (
     <li className={`item ${theme}`}>

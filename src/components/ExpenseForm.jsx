@@ -23,16 +23,6 @@ const ExpenseForm = () => {
   // Params
   const slug = useParams();
 
-  // single expense
-  const [expense, setExpense] = useState({
-    id: uuid(),
-    charge: "",
-    amount: "",
-    label: "",
-    description: "",
-    date: ""
-  });
-
   // alert
   const [alert, setAlert] = useState({ show: false });
   // edit
@@ -40,9 +30,19 @@ const ExpenseForm = () => {
   // // edit item
   const [id] = useState(slug.expenseId ? slug.expenseId : 0);
 
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date(Date.now()));
 
   const [btnDisabled, setbtnDisabled] = useState(false);
+
+  // single expense
+  const [expense, setExpense] = useState({
+    id: uuid(),
+    charge: "",
+    amount: "",
+    label: "",
+    description: "",
+    date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+  });
 
   // ********** functionality *********
   const handleCharge = e => {
