@@ -1,14 +1,17 @@
 @import "../../scss/_vars.scss";
 .message {
-    width: 80%;
+    width: 100%;
     margin: 0 auto !important;
     padding: $gutter * 0.5;
+    border: 8px solid $light-background;
     border-radius: $gutter * 0.5;
     text-align: center;
     box-shadow: $flat-shadow;
-    color: $grey;
+    color: $white;
+    background: $special-gradient;
     &.dark {
-        background: $dark-background;
+        border: 5px solid $dark-background;
+        color: $lighter-grey;
         box-shadow: $flat-shadow-dark;
     }
 }

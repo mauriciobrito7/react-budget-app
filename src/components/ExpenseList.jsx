@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 //components
 import ExpenseItem from "./ExpenseItem";
+import Alert from "./Alert";
 
 // styles
 import "./ExpenseList.scss";
@@ -18,8 +19,14 @@ const ExpenseList = () => {
   const { theme } = useContext(ThemeContext);
   const { expenses, dispatch } = useContext(expenseContext);
 
+  // alert
+  const [alert, setAlert] = useState({
+    show: false
+  });
+
   return (
     <>
+      {alert.show && <Alert type={alert.type} text={alert.text} />}
       <ul className="list">
         {expenses.length === 0 && (
           <div className="list-empty">
@@ -31,7 +38,11 @@ const ExpenseList = () => {
         )}
         {expenses.map(expense => {
           return (
-            <ExpenseItem key={expense.id} expense={expense} theme={theme} />
+            <ExpenseItem
+              key={expense.id}
+              expense={expense}
+              setAlert={setAlert}
+            />
           );
         })}
       </ul>

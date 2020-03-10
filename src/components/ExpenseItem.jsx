@@ -1,9 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-
-// Components
-import Alert from "./Alert";
-
 // Styles
 import "./ExpenseItem.scss";
 // Contexts
@@ -15,7 +11,7 @@ import { DELETE } from "../context/ExpenseContext/types";
 import { IoMdCreate } from "react-icons/io";
 import { IoMdTrash } from "react-icons/io";
 
-const ExpenseItem = ({ expense }) => {
+const ExpenseItem = ({ expense, setAlert }) => {
   const { id, charge, amount, label, description, date } = expense;
   // Contexts
   const { dispatch } = useContext(expenseContext);
@@ -24,62 +20,60 @@ const ExpenseItem = ({ expense }) => {
   // History
   const history = useHistory();
 
-  // alert
-  const [alert, setAlert] = useState({
-    show: false
-  });
-
   // Events
   const handleDelete = () => {
+    handleAlert("danger", "gasto eliminado");
     dispatch({ type: DELETE, id });
-    handleAlert("danger", "Gasto eliminado");
   };
 
   const handleEdit = () => {
     history.push(`new/${id}`);
   };
 
-  let idTimeoutAlert;
+  const idTimeoutAlert = setTimeout(() => {
+    setAlert({ show: false });
+  }, 2000);
+
   const handleAlert = (type, text) => {
     setAlert({ show: true, type, text });
 
     // hide alert past one second
-    idTimeoutAlert = setTimeout(() => {
-      setAlert({ show: false });
-    }, 1000);
+    return idTimeoutAlert;
   };
 
   useEffect(() => {
     return () => {
-      clearInterval(idTimeoutAlert);
+      console.log("fui destruido");
+      //clearInterval(idTimeoutAlert);
     };
-  }, [alert]);
+  }, []);
 
   return (
-    <li className={`item ${theme}`}>
-      {alert.show && <Alert type={"success"} text={"alert.text"} />}
-      <div className="info">
-        <span className="expense">{charge}</span>
-        <span className="amount">${amount}</span>
-      </div>
-      <div className="description">{description}</div>
-      <div className="menu">
-        <span className="label">{label}</span>
-        <span className="date">{date}</span>
-        <button
-          onClick={() => handleEdit()}
-          className={`btn btn-circle__small ${theme}`}
-        >
-          <IoMdCreate className="icon-custom btn-edit" />
-        </button>
-        <button
-          onClick={() => handleDelete()}
-          className={`btn btn-circle__small ${theme}`}
-        >
-          <IoMdTrash className="icon-custom btn-delete" />
-        </button>
-      </div>
-    </li>
+    <>
+      <li className={`item ${theme}`}>
+        <div className="info">
+          <span className="expense">{charge}</span>
+          <span className="amount">${amount}</span>
+        </div>
+        <div className="description">{description}</div>
+        <div className="menu">
+          <span className="label">{label}</span>
+          <span className="date">{date}</span>
+          <button
+            onClick={() => handleEdit()}
+            className={`btn btn-circle__small ${theme}`}
+          >
+            <IoMdCreate className="icon-custom btn-edit" />
+          </button>
+          <button
+            onClick={() => handleDelete()}
+            className={`btn btn-circle__small ${theme}`}
+          >
+            <IoMdTrash className="icon-custom btn-delete" />
+          </button>
+        </div>
+      </li>
+    </>
   );
 };
 

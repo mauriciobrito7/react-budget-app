@@ -131,7 +131,7 @@ const ExpenseForm = () => {
       });
       setEdit(false);
     };
-  }, [slug.expenseId]);
+  }, [id]);
 
   return (
     <div>

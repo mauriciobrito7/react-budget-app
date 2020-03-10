@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import "./Alert.scss";
 
@@ -8,10 +8,6 @@ import { ThemeContext } from "../App";
 const Alert = ({ type, text }) => {
   // Contexts
   const { theme } = useContext(ThemeContext);
-  // alert
-  const [alert, setAlert] = useState({
-    show: false
-  });
 
   return (
     <>
