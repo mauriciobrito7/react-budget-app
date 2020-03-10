@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import Navbar from "./Navbar";
+import Navbar from "../Navbar/Navbar";
 import "./Layout.scss";
 import { IoMdMoon } from "react-icons/io";
-import { ThemeContext } from "../App";
-import sunny from "../svg/sunny.svg";
+import { ThemeContext } from "../../App";
+import sunny from "../../svg/sunny.svg";
 
 function Layout({ children }) {
   // Theme

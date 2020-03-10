@@ -7,7 +7,7 @@ import Expenses from "./pages/Expenses";
 import ExpenseNew from "./pages/ExpenseNew";
 
 // Components
-import Layout from "./components/Layout";
+import Layout from "./components/Layout/Layout";
 
 // Contexts
 import ExpenseContext from "./context/ExpenseContext/ExpenseContext";

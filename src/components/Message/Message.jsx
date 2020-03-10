@@ -8,7 +8,7 @@ function Message({ children }) {
   const { theme } = useContext(ThemeContext);
   return (
     <div>
-      <h3 className={`message ${theme}`}>{children}</h3>
+      <p className={`message ${theme}`}>{children}</p>
     </div>
   );
 }

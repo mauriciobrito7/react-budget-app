@@ -3,12 +3,13 @@ import "./ExpenseForm.scss";
 import { useHistory, useParams } from "react-router-dom";
 import uuid from "uuid/v4";
 // Contexts
-import { ThemeContext } from "../App";
-import { expenseContext } from "../context/ExpenseContext/ExpenseContext";
+import { ThemeContext } from "../../App";
+import { expenseContext } from "../../context/ExpenseContext/ExpenseContext";
 // Types
-import { SAVE, EDIT } from "../context/ExpenseContext/types";
+import { SAVE, EDIT } from "../../context/ExpenseContext/types";
+import { labels } from "./Label";
 // Components
-import Alert from "./Alert";
+import Alert from "../Alert/Alert";
 import Calendar from "react-calendar";
 // Icons
 // import shapeDark from "../svg/shape-dark.svg";
@@ -127,7 +128,8 @@ const ExpenseForm = () => {
         charge: "",
         amount: "",
         label: "",
-        description: ""
+        description: "",
+        date: ""
       });
       setEdit(false);
     };
@@ -162,15 +164,16 @@ const ExpenseForm = () => {
           />
         </div>
         <div className="form-control">
-          <input
-            type="text"
+          <select
             className={`${theme} form-control`}
-            id="label"
-            name="label"
-            placeholder="Clasificación"
-            value={expense.label || ""}
             onChange={handleLabel}
-          />
+            name="select"
+            value={expense.label || "Comida"}
+          >
+            {labels.map(label => {
+              return <option key={label}>{label}</option>;
+            })}
+          </select>
         </div>
         <div className="form-control">
           <textarea

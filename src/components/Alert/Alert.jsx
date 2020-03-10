@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./Alert.scss";
 
 // Contexts
-import { ThemeContext } from "../App";
+import { ThemeContext } from "../../App";
 
 const Alert = ({ type, text }) => {
   // Contexts

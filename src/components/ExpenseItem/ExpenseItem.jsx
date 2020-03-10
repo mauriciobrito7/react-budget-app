@@ -3,9 +3,9 @@ import { useHistory } from "react-router-dom";
 // Styles
 import "./ExpenseItem.scss";
 // Contexts
-import { ThemeContext } from "../App";
-import { expenseContext } from "../context/ExpenseContext/ExpenseContext";
-import { DELETE } from "../context/ExpenseContext/types";
+import { ThemeContext } from "../../App";
+import { expenseContext } from "../../context/ExpenseContext/ExpenseContext";
+import { DELETE } from "../../context/ExpenseContext/types";
 
 // Icons
 import { IoMdCreate } from "react-icons/io";

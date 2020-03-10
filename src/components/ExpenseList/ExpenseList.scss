@@ -1,4 +1,18 @@
-@import "../scss/_vars.scss";
+@import "../../scss/_vars.scss";
+.panel {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $gutter !important;
+    .filter {
+        width: 40%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
 .list {
     &-empty {
         display: flex;

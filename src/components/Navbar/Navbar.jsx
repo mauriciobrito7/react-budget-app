@@ -6,7 +6,7 @@ import "./Navbar.scss";
 
 // Icons
 import { MdHome, MdInsertChart } from "react-icons/md";
-import add from "../svg/add.svg";
+import add from "../../svg/add.svg";
 
 function Navbar({ theme }) {
   // const [route, setRoute] = useState(window.location.pathname);

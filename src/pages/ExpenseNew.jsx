@@ -1,7 +1,7 @@
 import React from "react";
 
 // Components
-import ExpenseForm from "../components/ExpenseForm";
+import ExpenseForm from "../components/ExpenseForm/ExpenseForm";
 
 function ExpenseNew() {
   return (

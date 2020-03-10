@@ -1,0 +1,1 @@
+export const labels = ['Comida', 'Necesario', 'Innecesario', 'Extraordinario', 'Entretenimiento']
