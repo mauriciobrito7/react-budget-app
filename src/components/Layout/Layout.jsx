@@ -9,7 +9,7 @@ function Layout({ children }) {
   // Theme
   const { theme, handleTheme } = useContext(ThemeContext);
   return (
-    <div className="main">
+    <div className="layout">
       <button className={`theme btn btn-circle ${theme}`} onClick={handleTheme}>
         {theme === "" ? (
           <IoMdMoon className="icon-custom" />
@@ -17,10 +17,8 @@ function Layout({ children }) {
           <img alt="icon" src={sunny} className="icon-custom" />
         )}
       </button>
-      <div className="layout">
-        <div className="children">{children}</div>
-        <Navbar theme={theme} />
-      </div>
+      <div className="children">{children}</div>
+      <Navbar theme={theme} />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 // Styles
 import "./ExpenseItem.scss";
@@ -40,13 +40,6 @@ const ExpenseItem = ({ expense, setAlert }) => {
     // hide alert past one second
     return idTimeoutAlert;
   };
-
-  useEffect(() => {
-    return () => {
-      console.log("fui destruido");
-      //clearInterval(idTimeoutAlert);
-    };
-  }, []);
 
   return (
     <>

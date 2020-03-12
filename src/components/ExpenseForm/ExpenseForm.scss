@@ -1,6 +1,6 @@
 @import "../../scss/_vars.scss";
 .form {
-    .form-control {
+    &-control {
         margin-bottom: $gutter !important;
     }
 }
@@ -9,6 +9,7 @@
     background: $light-background !important;
     border: none !important;
     border-radius: $gutter * 0.5;
+    width: 100% !important;
     box-shadow: $flat-shadow;
     color: $grey;
     &.dark {

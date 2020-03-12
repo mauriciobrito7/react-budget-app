@@ -8,6 +8,7 @@
     margin-bottom: $gutter !important;
     .filter {
         width: 40%;
+        height: 50px;
         display: flex;
         justify-content: flex-end;
     }
@@ -18,7 +19,9 @@
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        margin: $gutter * 2 0 !important;
+        width: 100%;
+        position: absolute;
+        top: 38vh;
         .icon-custom {
             width: 140px;
             height: 140px;
@@ -27,6 +30,7 @@
         &__title {
             color: $grey;
             text-align: center;
+            width: 100%;
         }
     }
 }

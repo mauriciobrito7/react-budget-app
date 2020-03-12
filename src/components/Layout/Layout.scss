@@ -1,20 +1,23 @@
 @import "../../scss/_vars.scss";
 .layout {
     margin: 0 $gutter !important;
-    max-width: 100%;
-}
-
-.main {
+    max-width: $small;
     position: relative;
+    @include desde($small) {
+        margin: 0 auto !important;
+    }
 }
 
 .theme {
     margin: 0px !important;
     position: absolute;
-    right: $gutter;
+    right: 0px;
     cursor: pointer;
 }
 
 .children {
     margin-bottom: $gutter * 5 !important;
+    @include desde($small) {
+        margin-bottom: $gutter * 8 !important;
+    }
 }

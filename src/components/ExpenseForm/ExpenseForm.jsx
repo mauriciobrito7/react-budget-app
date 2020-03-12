@@ -40,7 +40,7 @@ const ExpenseForm = () => {
     id: uuid(),
     charge: "",
     amount: "",
-    label: "",
+    label: `${labels[0]}`,
     description: "",
     date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
   });
@@ -83,7 +83,7 @@ const ExpenseForm = () => {
       }
     } else {
       // handle alert called
-      handleAlert("danger", "El gasto tiene que ser mayor a 0");
+      handleAlert("danger", "El gasto tiene que ser mayor a 0 y tener nombre");
     }
   };
 
@@ -104,13 +104,13 @@ const ExpenseForm = () => {
   const handleAlert = (type, text) => {
     // show the message
     setAlert({ show: true, type, text });
-    // the button is disabled to not create a copy
-    setbtnDisabled(true);
 
     // hide alert past one second
     idTimeoutAlert = setTimeout(() => {
       setAlert({ show: false });
-      if (expense.amount > 0) {
+      if (expense.charge !== "" && expense.amount > 0) {
+        // the button is disabled to not create a copy
+        setbtnDisabled(true);
         // Redirect to "/"
         history.push("/");
       }
@@ -163,7 +163,7 @@ const ExpenseForm = () => {
             onChange={handleAmount}
           />
         </div>
-        <div className="form-control">
+        <div>
           <select
             className={`${theme} form-control`}
             onChange={handleLabel}

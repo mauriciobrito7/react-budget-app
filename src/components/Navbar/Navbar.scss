@@ -6,6 +6,11 @@
     left: 0;
     bottom: 0;
     z-index: 1000;
+    @include desde($small) {
+        width: $small;
+        bottom: $gutter;
+        left: calc(50% - (240px));
+    }
     &.dark {
         background: transparent;
     }
@@ -16,6 +21,9 @@
         justify-content: space-around;
         align-items: center;
         border-radius: 8px 8px 0px 0px;
+        @include desde($small) {
+            border-radius: 8px;
+        }
         height: 100%;
     }
     &-menu.dark {
