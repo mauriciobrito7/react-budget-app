@@ -1,39 +1,43 @@
 @import "../../scss/_vars.scss";
 .navbar {
-    width: 100%;
-    height: 60px;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    z-index: 1000;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  @include desde($small) {
+    width: $small;
+    bottom: $gutter;
+    left: calc(50% - (240px));
+  }
+  &.dark {
+    background: transparent;
+  }
+  &-menu {
+    background: $light-background;
+    box-shadow: $flat-shadow;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 8px 8px 0px 0px;
     @include desde($small) {
-        width: $small;
-        bottom: $gutter;
-        left: calc(50% - (240px));
+      border-radius: 8px;
     }
-    &.dark {
-        background: transparent;
+    height: 100%;
+    .btn > img {
+      transform: rotate(45deg);
     }
-    &-menu {
-        background: $light-background;
-        box-shadow: $flat-shadow;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        border-radius: 8px 8px 0px 0px;
-        @include desde($small) {
-            border-radius: 8px;
-        }
-        height: 100%;
+    .rotate {
+      transition: transform 0.7s ease;
+      transform: rotate(45deg);
     }
-    &-menu.dark {
-        background: $dark-background;
-        box-shadow: $flat-shadow-dark;
-        // background: linear-gradient(145deg, #111217, #14151b);
-        // box-shadow: 5px 5px 10px #101115, -5px -5px 10px #16171d;
-    }
-    .home {}
-    .new {
-        color: $primary;
-    }
+  }
+  &-menu.dark {
+    background: $dark-background;
+    box-shadow: $flat-shadow-dark;
+  }
+  .new {
+    color: $primary;
+  }
 }
