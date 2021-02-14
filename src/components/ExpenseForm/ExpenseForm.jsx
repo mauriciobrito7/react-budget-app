@@ -11,8 +11,6 @@ import { labels } from "./Label";
 // Components
 import Alert from "../Alert/Alert";
 import Calendar from "react-calendar";
-// Icons
-// import shapeDark from "../svg/shape-dark.svg";
 
 const ExpenseForm = () => {
   // Contexts
@@ -31,7 +29,7 @@ const ExpenseForm = () => {
   // // edit item
   const [id] = useState(slug.expenseId ? slug.expenseId : 0);
 
-  const [date, setDate] = useState(new Date(Date.now()));
+  const [date] = useState(new Date(Date.now()));
 
   const [btnDisabled, setbtnDisabled] = useState(false);
 
@@ -42,34 +40,34 @@ const ExpenseForm = () => {
     amount: "",
     label: `${labels[0]}`,
     description: "",
-    date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+    date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
   });
 
   // ********** functionality *********
-  const handleCharge = e => {
+  const handleCharge = (e) => {
     setExpense({ ...expense, charge: e.target.value });
   };
 
-  const handleAmount = e => {
+  const handleAmount = (e) => {
     setExpense({ ...expense, amount: e.target.value });
   };
 
-  const handleLabel = e => {
+  const handleLabel = (e) => {
     setExpense({ ...expense, label: e.target.value });
   };
 
-  const handleDescription = e => {
+  const handleDescription = (e) => {
     setExpense({ ...expense, description: e.target.value });
   };
 
-  const handleDate = date => {
+  const handleDate = (date) => {
     setExpense({
       ...expense,
-      date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+      date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (expense.charge !== "" && expense.amount > 0) {
       if (!edit) {
@@ -88,12 +86,12 @@ const ExpenseForm = () => {
   };
 
   // // handle edit
-  const handleEdit = id => {
+  const handleEdit = (id) => {
     // change button
     setEdit(true);
 
     // search expense to edit
-    let expenseToEdit = expenses.find(expense => expense.id === id);
+    let expenseToEdit = expenses.find((expense) => expense.id === id);
 
     // edit expense
     setExpense(expenseToEdit);
@@ -129,11 +127,12 @@ const ExpenseForm = () => {
         amount: "",
         label: "",
         description: "",
-        date: ""
+        date: "",
       });
       setEdit(false);
     };
-  }, [id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, slug, idTimeoutAlert]);
 
   return (
     <div>
@@ -170,7 +169,7 @@ const ExpenseForm = () => {
             name="select"
             value={expense.label || "Comida"}
           >
-            {labels.map(label => {
+            {labels.map((label) => {
               return <option key={label}>{label}</option>;
             })}
           </select>
