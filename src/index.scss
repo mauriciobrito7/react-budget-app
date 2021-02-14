@@ -3,40 +3,35 @@
 /* You can add global styles to this file, and also import other style files */
 
 html {
-    box-sizing: border-box;
-    font-size: $font-size;
-    font-family: $font-text;
-    font-weight: $normal;
-    -ms-text-size-ajust: 100%;
-    -moz-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    color: $dark-grey;
+  box-sizing: border-box;
+  font-size: $font-size;
+  font-family: $font-text;
+  font-weight: $normal;
+  -ms-text-size-ajust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: $dark-grey;
 }
 
 body {
-    overflow-x: hidden;
-    background: $light-background;
-    //transition: 0.3s ease all;
-    &.dark {
-        background: $dark-background;
-    }
+  overflow-x: hidden;
 }
 
 *,
 *::after,
 *::before {
-    box-sizing: inherit;
-    margin: 0 !important;
-    padding: 0;
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-    color: $darker-grey;
-    text-decoration: none;
+  color: $darker-grey;
+  text-decoration: none;
 }
 
 i {
-    display: inline;
+  display: inline;
 }
 
 h1,
@@ -45,21 +40,21 @@ h3,
 h4,
 h5,
 h6 {
-    line-height: 1.3em;
-    font-weight: $bold;
-    color: $medium-grey;
+  line-height: 1.3em;
+  font-weight: $bold;
+  color: $medium-grey;
 }
 
 h1 {
-    font-size: $h1-size;
+  font-size: $h1-size;
 }
 
 h2 {
-    font-size: $h2-size;
+  font-size: $h2-size;
 }
 
 h3 {
-    font-size: $h3-size;
+  font-size: $h3-size;
 }
 
 img,
@@ -69,21 +64,21 @@ iframe,
 picture,
 progress,
 svg {
-    display: inline-block;
-    width: 100%;
-    max-width: 100%;
-    vertical-align: baseline;
-    height: auto;
+  display: inline-block;
+  width: 100%;
+  max-width: 100%;
+  vertical-align: baseline;
+  height: auto;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 li {
-    margin-left: 1em;
-    list-style-type: inherit;
-    list-style-position: inside;
+  margin-left: 1em;
+  list-style-type: inherit;
+  list-style-position: inside;
 }
 
 label,
@@ -100,24 +95,23 @@ menu,
 nav,
 section,
 summary {
-    display: block;
+  display: block;
 }
 
 b,
 strong {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 *[disabled] {
-    cursor: default;
-    color: $medium-grey;
-    background: $grey;
+  cursor: default;
+  color: $medium-grey;
+  background: $grey;
 }
-
 
 /*
   ::selection{
@@ -137,45 +131,45 @@ table {
 //     background-image: -webkit-gradient( linear, 0 0, 0 100%, color-stop(0.5, rgba(255, 255, 255, 0.2)), color-stop(0.5, transparent), to(transparent));
 // }
 input {
-    width: 100%;
-    height: 50px;
-    background: $light-background;
-    box-shadow: $press-shadow;
-    border: none;
-    border-radius: $radius;
-    color: $primary;
-    font-weight: $bold;
-    caret-color: $primary;
-    padding: $gutter;
-    caret-color: $grey;
+  width: 100%;
+  height: 50px;
+  background: $light-background;
+  box-shadow: $press-shadow;
+  border: none;
+  border-radius: $radius;
+  color: $primary;
+  font-weight: $bold;
+  caret-color: $primary;
+  padding: $gutter;
+  caret-color: $grey;
+  &:focus {
+    outline: 1px solid $primary;
+  }
+  &.dark {
+    background: $dark-background;
+    box-shadow: $press-shadow-dark;
     &:focus {
-        outline: 1px solid $primary;
-    }
-    &.dark {
-        background: $dark-background;
-        box-shadow: $press-shadow-dark;
-        &:focus {
-            outline: 1px solid $primary;
-            background: $dark-background;
-        }
-        &:-webkit-autofill,
-        &:-webkit-autofill:hover,
-        &:-webkit-autofill:focus {
-            background: $dark-background;
-            -webkit-text-fill-color: $primary;
-            transition: background-color 5000s ease-in-out 0s;
-        }
+      outline: 1px solid $primary;
+      background: $dark-background;
     }
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
-        -webkit-text-fill-color: $primary;
-        transition: background-color 5000s ease-in-out 0s;
+      background: $dark-background;
+      -webkit-text-fill-color: $primary;
+      transition: background-color 5000s ease-in-out 0s;
     }
-    &::-webkit-input-placeholder {
-        color: $grey;
-        font-weight: $medium;
-    }
+  }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: $primary;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+  &::-webkit-input-placeholder {
+    color: $grey;
+    font-weight: $medium;
+  }
 }
 
 // input:-webkit-autofill,
@@ -192,110 +186,110 @@ input {
 //     -webkit-text-stroke-width: initial;
 // }
 textarea {
-    width: 100%;
-    background: $light-background;
-    box-shadow: $press-shadow;
-    border: none;
-    border-radius: $radius;
-    color: $primary;
-    font-family: $font-text;
-    font-weight: $bold;
-    caret-color: $primary;
-    padding: $gutter;
-    caret-color: $grey;
+  width: 100%;
+  background: $light-background;
+  box-shadow: $press-shadow;
+  border: none;
+  border-radius: $radius;
+  color: $primary;
+  font-family: $font-text;
+  font-weight: $bold;
+  caret-color: $primary;
+  padding: $gutter;
+  caret-color: $grey;
+  &:focus {
+    outline: 1px solid $primary;
+  }
+  &::-webkit-input-placeholder {
+    color: $grey;
+    font-weight: $medium;
+  }
+  &.dark {
+    background: $dark-background;
+    box-shadow: $press-shadow-dark;
     &:focus {
-        outline: 1px solid $primary;
+      outline: 1px solid $primary;
+      background: $dark-background;
     }
-    &::-webkit-input-placeholder {
-        color: $grey;
-        font-weight: $medium;
-    }
-    &.dark {
-        background: $dark-background;
-        box-shadow: $press-shadow-dark;
-        &:focus {
-            outline: 1px solid $primary;
-            background: $dark-background;
-        }
-    }
+  }
 }
 
 button {
-    &.btn {
-        height: 50px;
-        background: $light-background;
-        box-shadow: $flat-shadow;
-        border: none;
-        border-radius: $radius * 6;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        color: $grey;
-        font-weight: $bold;
-        &:active {
-            box-shadow: $press-shadow;
-        }
-        &:focus {
-            outline: transparent;
-        }
-        &-icon {
-            height: $gutter * 1.4;
-            width: $gutter * 1.4;
-        }
-        &-danger {
-            color: $danger !important;
-        }
-        &-success {
-            color: $success !important;
-        }
-        &-circle {
-            width: 40px !important;
-            height: 40px !important;
-            &__small {
-                width: 30px;
-                height: 30px;
-            }
-        }
+  &.btn {
+    height: 50px;
+    background: $light-background;
+    box-shadow: $flat-shadow;
+    border: none;
+    border-radius: $radius * 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: $grey;
+    font-weight: $bold;
+    &:active {
+      box-shadow: $press-shadow;
     }
-    &.dark {
-        background: $dark-background;
-        box-shadow: $flat-shadow-dark;
-        color: $white;
-        &:active {
-            box-shadow: $press-shadow-dark;
-        }
+    &:focus {
+      outline: transparent;
     }
+    &-icon {
+      height: $gutter * 1.4;
+      width: $gutter * 1.4;
+    }
+    &-danger {
+      color: $danger !important;
+    }
+    &-success {
+      color: $success !important;
+    }
+    &-circle {
+      width: 40px !important;
+      height: 40px !important;
+      &__small {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+  &.dark {
+    background: $dark-background;
+    box-shadow: $flat-shadow-dark;
+    color: $white;
+    &:active {
+      box-shadow: $press-shadow-dark;
+    }
+  }
 }
 
 select {
-    width: 100%;
-    height: 50px;
-    padding: $gutter * 0.7;
-    border: none;
-    border-radius: 8px;
-    color: $grey;
-    background: $light-background;
-    box-shadow: $flat-shadow;
-    font-family: $font-text !important;
-    font-weight: $normal !important;
-    margin-bottom: 0 !important;
-    &.dark {
-        background: $dark-background;
-        box-shadow: $flat-shadow-dark;
-    }
+  width: 100%;
+  height: 50px;
+  padding: $gutter * 0.7;
+  border: none;
+  border-radius: 8px;
+  color: $grey;
+  background: $light-background;
+  box-shadow: $flat-shadow;
+  font-family: $font-text !important;
+  font-weight: $normal !important;
+  margin-bottom: 0 !important;
+  &.dark {
+    background: $dark-background;
+    box-shadow: $flat-shadow-dark;
+  }
 }
 
 .icon-custom {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .title {
-    text-align: left;
-    color: transparent;
-    width: 60%;
-    background: $special-gradient !important;
-    background-clip: text !important;
-    margin: $gutter 0 !important;
+  text-align: left;
+  color: transparent;
+  width: 60%;
+  background: $special-gradient !important;
+  background-clip: text !important;
+  margin: $gutter 0 !important;
 }

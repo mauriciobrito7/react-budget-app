@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./App.scss";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // pages
@@ -25,7 +25,7 @@ function App() {
 
   // handle theme
   const handleTheme = () => {
-    setTheme(prevValue => {
+    setTheme((prevValue) => {
       const newValue = prevValue === "" ? "dark" : "";
       localStorage.setItem("theme", newValue);
       return newValue;
@@ -33,7 +33,7 @@ function App() {
   };
 
   return (
-    <body style={{ height: "100vh" }} className={`${theme}`}>
+    <div className={`body ${theme}`}>
       <BrowserRouter>
         <ThemeContext.Provider value={{ theme, handleTheme }}>
           <ExpenseContext>
@@ -48,7 +48,7 @@ function App() {
           </ExpenseContext>
         </ThemeContext.Provider>
       </BrowserRouter>
-    </body>
+    </div>
   );
 }
 
